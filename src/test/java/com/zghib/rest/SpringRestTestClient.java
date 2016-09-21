@@ -35,10 +35,27 @@ public class SpringRestTestClient {
         User user = restTemplate.getForObject(REST_SERVICE_URI+"/user/1", User.class);
         System.out.println(user);
 	}
+
+	@SuppressWarnings("unchecked")
+	private static void listAllDocs(){
+		System.out.println("Testing listAllDocuments Users API-----------");
+
+		RestTemplate restTemplate = new RestTemplate();
+		List<LinkedHashMap<String, Object>> usersMap = restTemplate.getForObject(REST_SERVICE_URI+"/document/", List.class);
+
+		if(usersMap!=null){
+			for(LinkedHashMap<String, Object> map : usersMap){
+				System.out.println("User : id="+map.get("id")+", Name="+map.get("firstName")+", LastName="+map.get("lastName"));;
+			}
+		}else{
+			System.out.println("No user exist----------");
+		}
+	}
 	
 
     public static void main(String args[]){
 		listAllUsers();
+		listAllDocs();
 		getUser();
     }
 }
