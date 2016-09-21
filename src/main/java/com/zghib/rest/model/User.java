@@ -1,4 +1,4 @@
-package com.websystique.springmvc.model;
+package com.zghib.rest.model;
 
 public class User {
 

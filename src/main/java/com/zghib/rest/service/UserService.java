@@ -1,8 +1,8 @@
-package com.websystique.springmvc.service;
+package com.zghib.rest.service;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.User;
+import com.zghib.rest.model.User;
 
 
 

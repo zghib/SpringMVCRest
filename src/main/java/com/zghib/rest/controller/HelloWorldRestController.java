@@ -1,7 +1,8 @@
-package com.websystique.springmvc.controller;
+package com.zghib.rest.controller;
 
 import java.util.List;
 
+import com.zghib.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,14 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.websystique.springmvc.model.User;
-import com.websystique.springmvc.service.UserService;
+import com.zghib.rest.model.User;
 
 @RestController
 public class HelloWorldRestController {
 
 	@Autowired
-	UserService userService;  //Service which will do all data retrieval/manipulation work
+    UserService userService;  //Service which will do all data retrieval/manipulation work
 
 	
 	//-------------------Retrieve All Users--------------------------------------------------------
