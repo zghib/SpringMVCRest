@@ -1,85 +1,76 @@
 package com.zghib.rest.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+@Entity
+@Table(name = "APP_USER")
 public class User {
 
-	private long id;
-	
-	private String name;
-	
-	private int age;
-	
-	private double salary;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	public User(){
-		id=0;
-	}
-	
-	public User(long id, String name, int age, double salary){
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.salary = salary;
-	}
-	
-	public long getId() {
-		return id;
-	}
+    @NotEmpty
+    @Column(name = "FIRST_NAME", nullable = false)
+    private String firstName;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    @NotEmpty
+    @Column(name = "LAST_NAME", nullable = false)
+    private String lastName;
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public int getAge() {
-		return age;
-	}
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public double getSalary() {
-		return salary;
-	}
 
-	public void setSalary(double salary) {
-		this.salary = salary;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", age=" + age
-				+ ", salary=" + salary + "]";
-	}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof User))
+            return false;
+        User other = (User)obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName;
+    }
 
 }

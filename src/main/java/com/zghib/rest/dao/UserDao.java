@@ -1,12 +1,13 @@
-package com.zghib.rest.service;
+package com.zghib.rest.dao;
 
 import java.util.List;
 
 import com.zghib.rest.model.User;
 
-public interface UserService {
+public interface UserDao {
 
     User findById(int id);
+
 
     List<User> findAllUsers();
 
