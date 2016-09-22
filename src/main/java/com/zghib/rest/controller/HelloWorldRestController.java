@@ -59,4 +59,15 @@ public class HelloWorldRestController {
 		return new ResponseEntity<List<UserDocument>>(docs, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/document/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserDocument> getUserDocument(@PathVariable("id") int id) {
+		System.out.println("Fetching User with id " + id);
+		UserDocument userDocument = userDocumentService.findById(id);
+		if (userDocument == null) {
+			System.out.println("Document with id " + id + " not found");
+			return new ResponseEntity<UserDocument>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<UserDocument>(userDocument, HttpStatus.OK);
+	}
+
 }
